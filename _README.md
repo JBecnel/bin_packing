@@ -14,30 +14,30 @@ So, developing a solution that is efficient unlikely.
 
 The version of the problem presented here has the extra complications of taking place in 3 dimensions. 
 This introduces a number of considerations, including:
-- the possiblity of rotating the boxes in order to fit (if allowed). Essentially boxes may have 6 different orientations.
-- gravity - boxes cannot "float" in the bin and need to on the bottom of the bin or on another box
-- stability - boxes need to be supported or they will "tip over". Thus a box should have another box or a bin under it's center of gravity at the very least
-- value - it is not given in this problem, but typically some boxes have more value than others and should be prioritizes.
+- the possibility of rotating the boxes in order to fit (if allowed). Essentially boxes may have 6 different orientations.
+- gravity - boxes cannot "float" in the bin and need to be on the bottom of the bin or another box
+- stability - boxes need to be supported or they will "tip over". Thus a box should have another box or a bin under its center of gravity at the very least
+- value for boxes - is not given in this problem, but typically some boxes have more value than others and should be prioritized.
 
 ## Literature Review
 
-I decided to do a quick literature review, as this problem have been studied.
+I decided to do a quick literature review, as this problem has been studied.
 The branch and bound technique for this particular problem was developed in the article by [Pisinger and Vigo](./BranchAndBoundSolution.pdf).
-This techinque is typically useful for NP problems. 
+This technique is typically useful for NP problems. 
 By providing optimization bounds on exploring branches of the solution spaces, we can "prune" the solution space tree and reduce exploring all solutions.
 
 More recently, in 2023, an approximation method for solving this problem was presented in [Nature](./NatureArticle.pdf).
-This article recast the problem as an optimzation problem whereby the goal is to minimize
+This article recast the problem as an optimization problem whereby the goal is to minimize
 - number of bins used (not a concern for our problem)
 - the average height of the items in the bins 
 - the gaps between items
 with respect to the following constraints
 - each item must have one orientation
 - no overlap between packages
-- each item must be only be used at most once (no duplicate items)
-- the items weight is within the maximum capacity of the bin (not a concern for our problem)
+- each item must be used at most once (no duplicate items)
+- the item weight is within the maximum capacity of the bin (not a concern for our problem)
 
-The objective functions plus the constraints give us a constrained quadratic model (CQM) which are solving in the article by the [Leap hybrid CQM](https://docs.dwavesys.com/docs/latest/doc_leap_hybrid.html).
+The objective functions plus the constraints give us a constrained quadratic model (CQM) which is studied in the article [Leap hybrid CQM](https://docs.dwavesys.com/docs/latest/doc_leap_hybrid.html).
 
 ## Approach
 I decide to make use of the dwave solver. 
@@ -55,9 +55,9 @@ Here are visuals with all boxes loaded into two side-by-side bins.
 ![result4](./results4.png)
 
 # Further Considerations
-The above is an approximation. If fact, you may notice that case 6 (in yellow) is not stable.
+The above is an approximation. In fact, you may notice that case 6 (in yellow) is not stable.
 If exact results are warranted we must consider implementing the branch and bound algorithm. 
 However, if there are fixed time constraints, this appears to be a suitable means of approximation.
 Of course, to continue using the dwave system would require paying for quantum computer access.
-There are classical approximation algorithms that could be attempted but "goodness" of approximmation can vary. 
-For example, in its current form, the [python-MIP](https://docs.python-mip.com/en/latest/index.html) was unable to handle the quadractic interactions.
+There are classical approximation algorithms that could be attempted but the "goodness" of approximation can vary. 
+For example, in its current form, the [python-MIP](https://docs.python-mip.com/en/latest/index.html) was unable to handle the quadratic interactions.
