@@ -37,7 +37,7 @@ with respect to the following constraints
 - each item must be used at most once (no duplicate items)
 - the item weight is within the maximum capacity of the bin (not a concern for our problem)
 
-The objective functions plus the constraints give us a constrained quadratic model (CQM) which is studied in the article [Leap hybrid CQM](https://docs.dwavesys.com/docs/latest/doc_leap_hybrid.html).
+The objective functions plus the constraints give us a constrained quadratic model (CQM) which is detailed here: [Leap hybrid CQM](https://docs.dwavesys.com/docs/latest/doc_leap_hybrid.html).
 
 ## Approach
 I decide to make use of the dwave solver. 
