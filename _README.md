@@ -10,7 +10,7 @@ If you write in a low-level language, you can use a library for basic data struc
 
 This is clearly a (much more complicated version) of the famous [bin packing problem](https://en.wikipedia.org/wiki/Bin_packing_problem). 
 This problem is known to be NP. 
-So, developing a solution that is efficient unlikely. 
+So, developing an efficient solution is unlikely. 
 
 The version of the problem presented here has the extra complications of taking place in 3 dimensions. 
 This introduces a number of considerations, including:
